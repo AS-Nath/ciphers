@@ -59,6 +59,9 @@ public class Main {
             case 2:
                 Encrypting.RSA();
                 break;
+            case 3:
+                Encrypting.AES();
+                break;
             default:
                 System.out.println("Wrong input - Start again.");
                 System.exit(2); //Exit code 2: User broke the program PURPOSEFULLY :(
@@ -82,6 +85,9 @@ public class Main {
             //ADD MORE CASES
             case 2:
                 Decrypting.RSA();
+                break;
+            case 3:
+                Decrypting.AES();
                 break;
             default:
                 System.out.println("Wrong input - Start again.");
