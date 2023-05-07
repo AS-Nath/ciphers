@@ -4,11 +4,14 @@
 **Introduction**
 This piece of software (built exclusively in Java) allows the user to encrypt and decrypt messages
 in 3 different ciphers:
-
 <br>
 
 **1.** *ASCII-Exchange*
+<br>
+
 **2.** *RSA*
+<br>
+
 **3.** *AES*
 <br>
 
