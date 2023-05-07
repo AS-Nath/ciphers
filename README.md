@@ -17,7 +17,7 @@ in 3 different ciphers:
 
 # *ASCII-Exchange*
 This is a substitution cipher - each character is shifted a fixed number of times (input by the user)
-in the Unicode set - and thus encrypted. This is the simplest form of cipher, and was even used by 
+in the ASCII set - and thus encrypted. This is the simplest form of cipher, and was even used by 
 the Roman emperor/general Julius Caesar. The most basic version of this cipher is thus called the
 Caesar cipher.
 <br>
@@ -31,6 +31,10 @@ vice-versa.
 Shift 4: hello how are you ---> lipps lsa evi csy
 <br>
 Shift 4: I'm fine thanks ---> M'q jmri xlerow [<i>Note that the apostrophe (') is maintained!<i>]
+<br>
+The user may want to test the decryption for themselves, by copying the encrypted version from here.
+<br>
+<br>
 
 ***The following components are IN DEVELOPMENT and are subject to change.***
 
