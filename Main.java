@@ -7,9 +7,6 @@ import java.io.*;
  *    the issue. Did not bother to change after the problem was solved. 
  */
 
- //TODO: Add the AES case to all 3 classes.
- //TODO: Implement a cipher.
-
 public class Main {
     final static InputStreamReader r = new InputStreamReader(System.in);
     final static BufferedReader br = new BufferedReader(r);
@@ -22,8 +19,9 @@ public class Main {
                     a = Integer.parseInt(br.readLine());
                     break;
                 }
-                catch (IOException e) {
-                    System.out.println("Input Error. This happens only in testing. Please contact developer immediately.");
+                catch (NumberFormatException e) {
+                    System.out.println("Exiting...");
+                    break mark;
                 }
             }
             switch(a) {
@@ -47,12 +45,36 @@ public class Main {
         System.out.println("RSA | Hard");
         System.out.println("AES | Impossible");
 
-        int a = Integer.parseInt(br.readLine());
+        int a = 0;
+        while (true) {
+            try {
+                a = Integer.parseInt(br.readLine());
+                if (a != 1 && a != 2 && a != 3) {
+                    throw new Exception("Not a 1/2/3");
+                }
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Enter 1/2/3 only!");
+            }
+        }
 
         switch(a) {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
-                int shift = Integer.parseInt(br.readLine());
+                int shift = 0;
+                while (true) {
+                    try {
+                        shift = Integer.parseInt(br.readLine());
+                        if (shift != 1 && shift != 2) {
+                            throw new Exception("Not a 1/2");
+                        }
+                        break;
+                    }
+                    catch (Exception e) {
+                        System.out.println("Enter 1/2 only!");
+                    }
+                }
                 Encrypting.unicodeExchange(shift);
                 break;
             //ADD MORE CASES
@@ -63,7 +85,7 @@ public class Main {
                 Encrypting.AES();
                 break;
             default:
-                System.out.println("Wrong input - Start again.");
+                System.out.println("This part should be unreachable.");
                 System.exit(2); //Exit code 2: User broke the program PURPOSEFULLY :(
         }
 
@@ -74,12 +96,36 @@ public class Main {
         System.out.println("RSA | Hard");
         System.out.println("AES | Impossible");
 
-        int a = Integer.parseInt(br.readLine());
+        int a = 0;
+        while (true) {
+            try {
+                a = Integer.parseInt(br.readLine());
+                if (a != 1 && a != 2 && a != 3) {
+                    throw new Exception("Not a 1/2/3");
+                }
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Enter 1/2/3 only!");
+            }
+        }
 
         switch(a) {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
-                int shift = Integer.parseInt(br.readLine());
+                int shift = 0;
+                while (true) {
+                    try {
+                        shift = Integer.parseInt(br.readLine());
+                        if (shift != 1 && shift != 2) {
+                            throw new Exception("Not a 1/2");
+                        }
+                        break;
+                    }
+                    catch (Exception e) {
+                        System.out.println("Enter 1/2 only!");
+                    }
+                }
                 Decrypting.unicodeExchange(shift);
                 break;
             //ADD MORE CASES
@@ -90,7 +136,7 @@ public class Main {
                 Decrypting.AES();
                 break;
             default:
-                System.out.println("Wrong input - Start again.");
+                System.out.println("This part should be unreachable");
                 System.exit(2); //Exit code 2: User broke the program PURPOSEFULLY :(
         }
 
