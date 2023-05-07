@@ -66,13 +66,10 @@ public class Main {
                 while (true) {
                     try {
                         shift = Integer.parseInt(br.readLine());
-                        if (shift != 1 && shift != 2) {
-                            throw new Exception("Not a 1/2");
-                        }
                         break;
                     }
                     catch (Exception e) {
-                        System.out.println("Enter 1/2 only!");
+                        System.out.println("Enter an integer!");
                     }
                 }
                 Encrypting.unicodeExchange(shift);
@@ -117,13 +114,10 @@ public class Main {
                 while (true) {
                     try {
                         shift = Integer.parseInt(br.readLine());
-                        if (shift != 1 && shift != 2) {
-                            throw new Exception("Not a 1/2");
-                        }
                         break;
                     }
                     catch (Exception e) {
-                        System.out.println("Enter 1/2 only!");
+                        System.out.println("Enter an integer!");
                     }
                 }
                 Decrypting.unicodeExchange(shift);
