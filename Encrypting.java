@@ -3,9 +3,7 @@ import java.util.*;
 public class Encrypting {
     static final Scanner sc = new Scanner(System.in);
     
-    public static void unicodeExchange(int shift) {
-        System.out.println("Enter text to be encrypted: ");
-        String s = sc.nextLine();
+    public static String unicodeExchange(int shift, String s) {
         String ns = "";
         for (int i = 0; i < s.length(); i++) {
             int n = (int)s.charAt(i);
@@ -33,7 +31,7 @@ public class Encrypting {
             }
             ns = ns + (char)n;
         }
-        System.out.println(ns + "\n");
+        return ns;
     }
 
     public static void RSA() {

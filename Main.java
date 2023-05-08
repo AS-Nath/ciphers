@@ -63,16 +63,29 @@ public class Main {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
                 int shift = 0;
+                String ns = "";
+                String s = "";
                 while (true) {
                     try {
                         shift = Integer.parseInt(br.readLine());
+                        System.out.println("Enter text to be encrypted: ");
+                        s = br.readLine();
+                        ns = Encrypting.unicodeExchange(shift, s);
+                        if (s.equals(Decrypting.unicodeExchange(shift, ns)))
+                        {
+                            ;
+                        }
+                        else {
+                            throw new Exception("Too large an input!");
+                        }
                         break;
                     }
                     catch (Exception e) {
-                        System.out.println("Enter an integer!");
+                        System.out.println("Enter an integer! Or maybe a smaller one.");
                     }
                 }
-                Encrypting.unicodeExchange(shift);
+                //ns = Encrypting.unicodeExchange(shift, s);
+                System.out.println(ns + "\n");
                 break;
             //ADD MORE CASES
             case 2:
@@ -111,16 +124,28 @@ public class Main {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
                 int shift = 0;
+                String s = "";
+                String ns = "";
                 while (true) {
                     try {
                         shift = Integer.parseInt(br.readLine());
+                        System.out.println("Enter text to be decrypted: ");
+                        s = br.readLine();
+                        ns = Decrypting.unicodeExchange(shift, s);
+                        if (s.equals(Encrypting.unicodeExchange(shift, ns))) {
+                            ;
+                        }
+                        else {
+                            throw new Exception("Too large!");
+                        }
                         break;
                     }
                     catch (Exception e) {
                         System.out.println("Enter an integer!");
                     }
                 }
-                Decrypting.unicodeExchange(shift);
+                //String n = Decrypting.unicodeExchange(shift, s);
+                System.out.println(ns);
                 break;
             //ADD MORE CASES
             case 2:
