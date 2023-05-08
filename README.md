@@ -39,6 +39,7 @@ One possible output the user might want to consider is this:
 <br>
 
 *Enter an integer! Or maybe a smaller one.*
+
 <br>
 
 This might be a confusing output, because it occurs *after* you input what you want to encrypt/decrypt,
