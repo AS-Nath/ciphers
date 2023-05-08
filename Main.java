@@ -7,6 +7,8 @@ import java.io.*;
  *    the issue. Did not bother to change after the problem was solved. 
  */
 
+//TODO: Re-write input validation as a separate function
+
 public class Main {
     final static InputStreamReader r = new InputStreamReader(System.in);
     final static BufferedReader br = new BufferedReader(r);
