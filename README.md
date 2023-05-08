@@ -35,6 +35,21 @@ Shift 4: I'm fine thanks ---> M'q jmri xlerow <i>[Note that the apostrophe (') i
 The user may want to test the decryption for themselves, by copying the encrypted version from here.
 <br>
 <br>
+One possible output the user might want to consider is this:
+<br>
+
+*Enter an integer! Or maybe a smaller one.*
+<br>
+
+This might be a confusing output, because it occurs *after* you input what you want to encrypt/decrypt,
+but it has to do with the shift value you input. 
+
+Quite simply, you either did not enter an integer, or (more likely) the number you input was too large
+for the program to handle. Inputs even over 26 can be handled (I used 32 in testing) but if you try 
+something like 231323, the program throws an Exception which is caught, handled and so this message is
+output. 
+
+To proceed, just re-enter a smaller shift value.
 
 ***The following components are IN DEVELOPMENT and are subject to change.***
 

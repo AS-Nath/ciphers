@@ -81,7 +81,7 @@ public class Main {
                         break;
                     }
                     catch (Exception e) {
-                        System.out.println("Enter an integer! Or maybe a smaller one.");
+                        System.out.println("Enter an integer! Or maybe a smaller one. [Re-enter shift value!]");
                     }
                 }
                 System.out.println(ns + "\n");
@@ -139,7 +139,7 @@ public class Main {
                         break;
                     }
                     catch (Exception e) {
-                        System.out.println("Enter an integer!");
+                        System.out.println("Enter an integer! Or maybe a smaller one. [Re-enter shift value!]");
                     }
                 }
                 System.out.println(ns);
