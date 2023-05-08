@@ -1,4 +1,4 @@
-# Encryption/Decryption
+# Encryption/Decryption - Project Summary
 <br>
 
 **Introduction**
