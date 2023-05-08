@@ -30,7 +30,7 @@ vice-versa.
 <br>
 Shift 4: hello how are you ---> lipps lsa evi csy
 <br>
-Shift 4: I'm fine thanks ---> M'q jmri xlerow <i>[Note that the apostrophe (') is maintained!]<i>
+Shift 4: I'm fine thanks ---> M'q jmri xlerow <i>[Note that the apostrophe (') is maintained!]</i>
 <br>
 The user may want to test the decryption for themselves, by copying the encrypted version from here.
 <br>
