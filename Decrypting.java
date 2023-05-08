@@ -42,7 +42,16 @@ public class Decrypting {
         s = s + "";
     }
 
-    public static void AES() {
-        System.out.println("AES");
+    public static String PK(String n, int modulo, int privateKey) {
+        String ns = "";
+        for (int i = 0; i < n.length(); i++) {
+            if (n.charAt(i) == ' ') {
+                ns = ns + ' ';
+                continue;
+            }
+            int c = (int)n.charAt(i);
+            ns = ns + (char)((c + privateKey) % modulo);
+        }
+        return ns;
     }
 }

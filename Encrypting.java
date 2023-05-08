@@ -42,8 +42,17 @@ public class Encrypting {
         s = s + "";    
     }
 
-    public static void AES() {
-        System.out.println("AES");
+    public static String PK(String n, int modulo, int publicKey) {
+        String ns = "";
+        for (int i = 0; i < n.length(); i++) {
+            if (n.charAt(i) == ' ') {
+                ns = ns + ' ';
+                continue;
+            }
+            int c = (int)n.charAt(i);
+            ns = ns + (char)((c + publicKey) % modulo);
+        }
+        return ns;
     }
 }
 

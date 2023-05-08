@@ -1,4 +1,5 @@
 import java.io.*;
+
 /*
  * Note that this class uses the BufferedReader for input, while the others use the Scanner.
  * There are 2 reasons for this:
@@ -9,22 +10,22 @@ import java.io.*;
 public class Main {
     final static InputStreamReader r = new InputStreamReader(System.in);
     final static BufferedReader br = new BufferedReader(r);
+
     public static void main(String[] args) throws IOException {
         mark: while (true) {
             System.out.println("Encrypt/Decrypt? [1/2] [ANYTHING ELSE TO QUIT!]");
             int a = 0;
-            while(true) {
+            while (true) {
                 try {
                     a = Integer.parseInt(br.readLine());
                     break;
-                }
-                catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {
                     System.out.println("Exiting...");
                     break mark;
                 }
             }
             int x = userInput();
-            switch(a) {
+            switch (a) {
                 case 1:
                     encrypt(x);
                     break;
@@ -36,11 +37,11 @@ public class Main {
                     break mark;
             }
         }
-        System.exit(1); //Exit code 1: User ended program WILLINGLY
+        System.exit(1); // Exit code 1: User ended program WILLINGLY
     }
 
     public static void encrypt(int x) throws IOException {
-        switch(x) {
+        switch (x) {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
                 int shift = 0;
@@ -52,35 +53,39 @@ public class Main {
                         System.out.println("Enter text to be encrypted: ");
                         s = br.readLine();
                         ns = Encrypting.unicodeExchange(shift, s);
-                        if (s.equals(Decrypting.unicodeExchange(shift, ns)))
-                        {
+                        if (s.equals(Decrypting.unicodeExchange(shift, ns))) {
                             ;
-                        }
-                        else {
+                        } else {
                             throw new Exception("Too large an input!");
                         }
                         break;
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         System.out.println("Enter an integer! Or maybe a smaller one. [Re-enter shift value!]");
                     }
                 }
                 System.out.println(ns + "\n");
                 break;
-            case 2:
+            case 3:
                 Encrypting.RSA();
                 break;
-            case 3:
-                Encrypting.AES();
+            case 2:
+                System.out.println("Enter text to be encrypted: ");
+                String n = br.readLine();
+                int modulo = 256; // For now this is fixed.
+                System.out.println("Enter public key: ");
+                int publicKey = Integer.parseInt(br.readLine());
+                String encrypted = Encrypting.PK(n, modulo, publicKey);
+                System.out.println(encrypted + "\n");
                 break;
             default:
                 System.out.println("This part should be unreachable.");
-                System.exit(2); //Exit code 2: User broke the program PURPOSEFULLY :(
+                System.exit(2); // Exit code 2: User broke the program PURPOSEFULLY :(
         }
 
     }
+
     public static void decrypt(int x) throws IOException {
-        switch(x) {
+        switch (x) {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
                 int shift = 0;
@@ -94,34 +99,40 @@ public class Main {
                         ns = Decrypting.unicodeExchange(shift, s);
                         if (s.equals(Encrypting.unicodeExchange(shift, ns))) {
                             ;
-                        }
-                        else {
+                        } else {
                             throw new Exception("Too large!");
                         }
                         break;
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         System.out.println("Enter an integer! Or maybe a smaller one. [Re-enter shift value!]");
                     }
                 }
                 System.out.println(ns);
                 break;
-            //ADD MORE CASES
-            case 2:
+            // ADD MORE CASES
+            case 3:
                 Decrypting.RSA();
                 break;
-            case 3:
-                Decrypting.AES();
+            case 2:
+                // publicKey = 123, privateKey = 133
+                System.out.println("Enter text to be decrypted: ");
+                String n = br.readLine();
+                int modulo = 256; // For now this is fixed.
+                System.out.println("Enter private key: ");
+                int privateKey = Integer.parseInt(br.readLine());
+                String decrypted = Decrypting.PK(n, modulo, privateKey);
+                System.out.println(decrypted + "\n");
                 break;
             default:
                 System.out.println("This part should be unreachable");
-                System.exit(2); //Exit code 2: User broke the program PURPOSEFULLY :(
+                System.exit(2); // Exit code 2: User broke the program PURPOSEFULLY :(
         }
     }
+
     public static int userInput() {
         System.out.println("Encryption type | Difficulty to crack [1/2/3]");
-        System.out.println("Unicode-Exchange (Substitution) | Easy");
-        System.out.println("RSA | Hard");
+        System.out.println("ASCII-Exchange (Substitution) | Easy");
+        System.out.println("Generic Public Key Encryption | Medium");
         System.out.println("AES | Impossible");
 
         int a = 0;
@@ -132,8 +143,7 @@ public class Main {
                     throw new Exception("Not a 1/2/3");
                 }
                 break;
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
                 System.out.println("Enter 1/2/3 only!");
             }
         }
