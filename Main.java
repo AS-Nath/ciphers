@@ -84,10 +84,8 @@ public class Main {
                         System.out.println("Enter an integer! Or maybe a smaller one.");
                     }
                 }
-                //ns = Encrypting.unicodeExchange(shift, s);
                 System.out.println(ns + "\n");
                 break;
-            //ADD MORE CASES
             case 2:
                 Encrypting.RSA();
                 break;
@@ -144,7 +142,6 @@ public class Main {
                         System.out.println("Enter an integer!");
                     }
                 }
-                //String n = Decrypting.unicodeExchange(shift, s);
                 System.out.println(ns);
                 break;
             //ADD MORE CASES
