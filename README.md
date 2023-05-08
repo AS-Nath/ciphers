@@ -37,9 +37,7 @@ The user may want to test the decryption for themselves, by copying the encrypte
 <br>
 One possible output the user might want to consider is this:
 <br>
-
-*Enter an integer! Or maybe a smaller one.*
-
+Enter an integer! Or maybe a smaller one.
 <br>
 
 This might be a confusing output, because it occurs *after* you input what you want to encrypt/decrypt,
