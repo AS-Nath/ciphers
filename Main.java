@@ -6,9 +6,6 @@ import java.io.*;
  * 2. Scanner was giving trouble early in development, and BufferedReader helped me debug
  *    the issue. Did not bother to change after the problem was solved. 
  */
-
-//TODO: Re-write input validation as a separate function
-
 public class Main {
     final static InputStreamReader r = new InputStreamReader(System.in);
     final static BufferedReader br = new BufferedReader(r);
@@ -26,12 +23,13 @@ public class Main {
                     break mark;
                 }
             }
+            int x = userInput();
             switch(a) {
                 case 1:
-                    encrypt();
+                    encrypt(x);
                     break;
                 case 2:
-                    decrypt();
+                    decrypt(x);
                     break;
                 default:
                     System.out.println("Exiting...");
@@ -41,27 +39,8 @@ public class Main {
         System.exit(1); //Exit code 1: User ended program WILLINGLY
     }
 
-    public static void encrypt() throws IOException {
-        System.out.println("Encryption type | Difficulty to crack [1/2/3]");
-        System.out.println("Unicode-Exchange (Substitution) | Easy");
-        System.out.println("RSA | Hard");
-        System.out.println("AES | Impossible");
-
-        int a = 0;
-        while (true) {
-            try {
-                a = Integer.parseInt(br.readLine());
-                if (a != 1 && a != 2 && a != 3) {
-                    throw new Exception("Not a 1/2/3");
-                }
-                break;
-            }
-            catch (Exception e) {
-                System.out.println("Enter 1/2/3 only!");
-            }
-        }
-
-        switch(a) {
+    public static void encrypt(int x) throws IOException {
+        switch(x) {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
                 int shift = 0;
@@ -100,27 +79,8 @@ public class Main {
         }
 
     }
-    public static void decrypt() throws IOException {
-        System.out.println("Encryption type | Difficulty to crack [1/2/3]");
-        System.out.println("Unicode-Exchange (Substitution) | Easy");
-        System.out.println("RSA | Hard");
-        System.out.println("AES | Impossible");
-
-        int a = 0;
-        while (true) {
-            try {
-                a = Integer.parseInt(br.readLine());
-                if (a != 1 && a != 2 && a != 3) {
-                    throw new Exception("Not a 1/2/3");
-                }
-                break;
-            }
-            catch (Exception e) {
-                System.out.println("Enter 1/2/3 only!");
-            }
-        }
-
-        switch(a) {
+    public static void decrypt(int x) throws IOException {
+        switch(x) {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
                 int shift = 0;
@@ -157,7 +117,26 @@ public class Main {
                 System.out.println("This part should be unreachable");
                 System.exit(2); //Exit code 2: User broke the program PURPOSEFULLY :(
         }
+    }
+    public static int userInput() {
+        System.out.println("Encryption type | Difficulty to crack [1/2/3]");
+        System.out.println("Unicode-Exchange (Substitution) | Easy");
+        System.out.println("RSA | Hard");
+        System.out.println("AES | Impossible");
 
-
+        int a = 0;
+        while (true) {
+            try {
+                a = Integer.parseInt(br.readLine());
+                if (a != 1 && a != 2 && a != 3) {
+                    throw new Exception("Not a 1/2/3");
+                }
+                break;
+            }
+            catch (Exception e) {
+                System.out.println("Enter 1/2/3 only!");
+            }
+        }
+        return a;
     }
 }
