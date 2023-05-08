@@ -55,5 +55,3 @@ public class Encrypting {
         return ns;
     }
 }
-
-//String.format("\\u%04x", (int) c);
