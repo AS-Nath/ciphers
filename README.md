@@ -53,7 +53,7 @@ To proceed, just re-enter a smaller shift value.
 ***The following components are IN DEVELOPMENT and are subject to change.***
 
 # *Generic Public Key Encryption*
-This cipher uses a public key (used by the encrypted) and a private key (used by the decrypter).
+This cipher uses a public key (used by the encrypter) and a private key (used by the decrypter).
 We take a number, generally 256, called the modulo.
 Any individual ASCII character is encrypted as follows (pubk -> public key)
 <br>
