@@ -1,4 +1,5 @@
 import java.io.*;
+
 /*
  * Note that this class uses the BufferedReader for input, while the others use the Scanner.
  * There are 2 reasons for this:
@@ -65,7 +66,12 @@ public class Main {
                 System.out.println(ns + "\n");
                 break;
             case 3:
-                Encrypting.RSA();
+                System.out.println("Enter text to be encrypted: ");
+                String i = br.readLine();
+                System.out.println("Enter 8-bit binary key: ");
+                String key = br.readLine();
+                String enc = Encrypting.XOR(i, key);
+                System.out.println(enc);
                 break;
             case 2:
                 System.out.println("Enter text to be encrypted: ");
@@ -80,8 +86,7 @@ public class Main {
                             throw new Exception("Out of range 1-255");
                         }
                         break;
-                    }
-                    catch (Exception e) {
+                    } catch (Exception e) {
                         System.out.println("Please enter values in the range 1-255 ONLY");
                         continue;
                     }
@@ -123,7 +128,12 @@ public class Main {
                 break;
             // ADD MORE CASES
             case 3:
-                Decrypting.RSA();
+                System.out.println("Enter text to be decrypted: ");
+                String i = br.readLine();
+                System.out.println("Enter 8-bit binary key: ");
+                String key = br.readLine();
+                String dec = Decrypting.XOR(i, key);
+                System.out.println(dec);
                 break;
             case 2:
                 // publicKey = 123, privateKey = 133
@@ -145,7 +155,7 @@ public class Main {
         System.out.println("Encryption type | Difficulty to crack [1/2/3]");
         System.out.println("ASCII-Exchange (Substitution) | Easy");
         System.out.println("Generic Public Key Encryption | Medium");
-        System.out.println("AES | Impossible");
+        System.out.println("XOR | Hard");
 
         int a = 0;
         while (true) {
@@ -162,3 +172,5 @@ public class Main {
         return a;
     }
 }
+
+//KEY: 01010101

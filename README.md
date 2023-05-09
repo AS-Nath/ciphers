@@ -12,7 +12,7 @@ in 3 different ciphers:
 **2.** *Generic Public Key Encryption*
 <br>
 
-**3.** *RSA*
+**3.** *XOR*
 <br>
 
 # *ASCII-Exchange*
@@ -77,4 +77,24 @@ cryptography.
 
 ***The following components are IN DEVELOPMENT and are subject to change.***
 
-# *RSA*
+# *XOR*
+XOR is a logic gate which works as follows:
+<br>
+0 XOR 0 == 0
+<br>
+0 XOR 1 == 1
+<br>
+1 XOR 0 == 1
+<br>
+1 XOR 1 == 0
+<br>
+<br>
+Simply put, if A != B, A XOR B == 1. One interesting property is that if you repeat the XOR
+operation, you get the original input. This cipher applies the XOR operation on the binary of the
+ASCII code of every single character in the input string, XOR-ing it with a binary key input by the user.
+Note that since the key is 8-bit, this only supports characters with 8-bit ASCII equivalents (up to 127). 
+<br>
+This produces an exceptionally cryptic-looking piece of text, but by repeating the exact same operation,
+we can decrypt it. The one advantage is that this is pretty difficult to recognise as an encryption type,
+but once someone realises that something has been encrypted using 8-bit XOR, they need a maximum of 127 tries
+in a brute-force attack to decrypt the message.

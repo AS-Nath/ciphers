@@ -35,11 +35,27 @@ public class Decrypting {
         return ns;
     }
 
-    public static void RSA() {
-        System.out.println("Enter text to be decrypted: ");
-        String s = sc.nextLine();
-
-        s = s + "";
+    public static String XOR(String n, String key) {
+        char[] arr = new char[n.length()];
+        for (int i = 0; i < n.length(); i++) {
+            arr[i] = n.charAt(i);
+        }
+        String[] binaryArray = new String[n.length()];
+        for (int i = 0; i < n.length(); i++) {
+            int num = (int)arr[i];
+            binaryArray[i] = Integer.toBinaryString(0x100 | num).substring(1);
+        }
+        for (int i = 0; i < n.length(); i++) {
+            binaryArray[i] = applyXOR(binaryArray[i], key);
+        }
+        for (int i = 0; i < n.length(); i++) {
+            arr[i] = (char)Integer.parseInt(binaryArray[i], 2);
+        }
+        String ns = "";
+        for (int i = 0; i < arr.length; i++) {
+            ns = ns + arr[i];
+        }        
+        return ns; 
     }
 
     public static String PK(String n, int modulo, int privateKey) {
@@ -51,6 +67,16 @@ public class Decrypting {
             }
             int c = (int)n.charAt(i);
             ns = ns + (char)((c + privateKey) % modulo);
+        }
+        return ns;
+    }
+    public static String applyXOR(String n, String key) {
+        String ns = "";
+        for (int i = 0; i < n.length(); i++) {
+            int val1 = Integer.parseInt(Character.toString(n.charAt(i)));
+            int val2 = Integer.parseInt(Character.toString(key.charAt(i)));
+            int val = val1^val2;
+            ns = ns + Integer.toString(val);
         }
         return ns;
     }
