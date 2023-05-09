@@ -56,7 +56,6 @@ To proceed, just re-enter a smaller shift value.
 This cipher uses a public key (used by the encrypter) and a private key (used by the decrypter).
 We take a number, generally 256, called the modulo.
 Any individual ASCII character is encrypted as follows (pubk -> public key)
-<br>
 
 `encrypted = (c + pubk) % modulo [c -> character, modulo -> 256]`
 
