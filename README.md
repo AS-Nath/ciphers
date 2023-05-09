@@ -1,4 +1,4 @@
-# Encryption/Decryption - Project Summary
+# **Encryption/Decryption - Project Summary**
 <br>
 
 **Introduction**
@@ -73,7 +73,7 @@ Also note that just like the substitution cipher, this is a HIGHLY insecure meth
 because of how basic it is - but it is the best way to demonstrate the concept of public-key
 cryptography.
 <br>
-
+<br>
 
 ***The following components are IN DEVELOPMENT and are subject to change.***
 
