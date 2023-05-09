@@ -59,6 +59,8 @@ Any individual ASCII character is encrypted as follows (pubk -> public key)
 `encrypted = (c + pubk) % modulo [c -> character, modulo -> 256]`
 
 and can be decrypted as follows (privk -> private key)
+<br>
+
 `decrypted = (c + privk) % modulo`
 
 <br>
