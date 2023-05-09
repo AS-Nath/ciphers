@@ -57,10 +57,17 @@ This cipher uses a public key (used by the encrypter) and a private key (used by
 We take a number, generally 256, called the modulo.
 Any individual ASCII character is encrypted as follows (pubk -> public key)
 <br>
-encrypted = (c + pubk) % modulo [c -> character, modulo -> 256]
+<br>
+
+`encrypted = (c + pubk) % modulo [c -> character, modulo -> 256]`
+
+<br>
 <br>
 and can be decrypted as follows (privk -> private key)
-decrypted = (c + privk) % modulo
+
+`decrypted = (c + privk) % modulo`
+
+<br>
 <br>
 The private key is taken as any value from 1 to modulo-1, generally 255. As such, the public key is 
 modulo - privk. If the private key is 133, the public key is 123. Test this out for yourself.
