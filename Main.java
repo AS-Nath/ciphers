@@ -71,8 +71,21 @@ public class Main {
                 System.out.println("Enter text to be encrypted: ");
                 String n = br.readLine();
                 int modulo = 256; // For now this is fixed.
-                System.out.println("Enter public key: ");
-                int publicKey = Integer.parseInt(br.readLine());
+                int publicKey = 0;
+                while (true) {
+                    try {
+                        System.out.println("Enter public key: ");
+                        publicKey = Integer.parseInt(br.readLine());
+                        if (publicKey > 255) {
+                            throw new Exception("Out of range 1-255");
+                        }
+                        break;
+                    }
+                    catch (Exception e) {
+                        System.out.println("Please enter values in the range 1-255 ONLY");
+                        continue;
+                    }
+                }
                 String encrypted = Encrypting.PK(n, modulo, publicKey);
                 System.out.println(encrypted + "\n");
                 break;

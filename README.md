@@ -50,8 +50,6 @@ output.
 
 To proceed, just re-enter a smaller shift value.
 
-***The following components are IN DEVELOPMENT and are subject to change.***
-
 # *Generic Public Key Encryption*
 This cipher uses a public key (used by the encrypter) and a private key (used by the decrypter).
 We take a number, generally 256, called the modulo.
@@ -69,8 +67,14 @@ and can be decrypted as follows (privk -> private key)
 The private key is taken as any value from 1 to modulo-1, generally 255. As such, the public key is 
 modulo - privk. If the private key is 133, the public key is 123. Test this out for yourself.
 <br>
-Note that ' ' (space) is left untouched. The input validation for this part has not yet been set up,
-so please do not try to input values above 255 under public/private key.
+Note that ' ' (space) is left untouched. 
 <br>
+Also note that just like the substitution cipher, this is a HIGHLY insecure method of encryption
+because of how basic it is - but it is the best way to demonstrate the concept of public-key
+cryptography.
+<br>
+
+
+***The following components are IN DEVELOPMENT and are subject to change.***
 
 # *RSA*
