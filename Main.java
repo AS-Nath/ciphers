@@ -1,5 +1,4 @@
 import java.io.*;
-
 /*
  * Note that this class uses the BufferedReader for input, while the others use the Scanner.
  * There are 2 reasons for this:
