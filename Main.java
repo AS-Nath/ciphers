@@ -71,6 +71,26 @@ public class Main {
                 String key = br.readLine();
                 String enc = Encrypting.XOR(i, key);
                 System.out.println(enc);
+                /*
+                String[] arr = tokenise(i);
+                for (int c = 0; c < arr.length; c++) {
+                    arr[c] = arr[c].substring(4);
+                    System.out.println(arr[c]);
+                }
+                */
+                /*
+                System.out.println("Enter text to be encrypted: ");
+                String i = br.readLine();
+                System.out.println("Enter 8-bit binary key: ");
+                String key = br.readLine();
+                String[] arr = tokenise(i);
+                String finalString = "";
+                for (int c = 0; c < arr.length; c++) {
+                    finalString = finalString + Encrypting.XOR(arr[c], key);
+                }
+                //String enc = Encrypting.XOR(i, key);
+                System.out.println(finalString);
+                */
                 break;
             case 2:
                 System.out.println("Enter text to be encrypted: ");
@@ -126,13 +146,26 @@ public class Main {
                 System.out.println(ns);
                 break;
             // ADD MORE CASES
-            case 3:
+            case 3:                
                 System.out.println("Enter text to be decrypted: ");
                 String i = br.readLine();
                 System.out.println("Enter 8-bit binary key: ");
                 String key = br.readLine();
                 String dec = Decrypting.XOR(i, key);
                 System.out.println(dec);
+                /*
+                System.out.println("Enter text to be decrypted: ");
+                String i = br.readLine();
+                System.out.println("Enter 8-bit binary key: ");
+                String key = br.readLine();
+                String[] arr = tokenise(i);
+                String finalString = "";
+                for (int c = 0; c < arr.length; c++) {
+                    finalString = finalString + Decrypting.XOR(arr[c], key);
+                }
+                //String enc = Encrypting.XOR(i, key);
+                System.out.println(finalString);
+                */
                 break;
             case 2:
                 // publicKey = 123, privateKey = 133
@@ -169,6 +202,31 @@ public class Main {
             }
         }
         return a;
+    }
+    public static String[] tokenise(String s) {
+        int len = 20;
+        //arr[] will be an array of 20-char long strings.
+        int n = (int) (s.length() / len) + 1;
+        String[] arr = new String[n];
+        if (n == 1) {
+            arr[0] = s;
+            return arr;
+        }
+        int count = 0;
+
+        marker: for (int i = 0; i < s.length(); i++) {
+            for (int j = 0; j < len; j++) {
+                try {
+                    arr[i] = arr[i] + s.charAt(count);
+                }
+                catch (StringIndexOutOfBoundsException e) {
+                    arr[i] = arr[i].substring(4);
+                    break marker;
+                }
+                count++;
+            }
+        }
+        return arr;
     }
 }
 
