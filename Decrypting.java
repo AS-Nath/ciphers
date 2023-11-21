@@ -1,8 +1,17 @@
 import java.util.*;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class Decrypting {
 
     static final Scanner sc = new Scanner(System.in);
+    private static final String ALGORITHM = "AES";
+    private static final String TRANSFORMATION = "AES";
 
     public static String unicodeExchange(int shift, String s) {
         String ns = "";
@@ -79,5 +88,11 @@ public class Decrypting {
             ns = ns + Integer.toString(val);
         }
         return ns;
+    }
+    public static String AESDecrypt(String input, SecretKey key) throws NoSuchAlgorithmException, Exception {
+        Cipher cipher = Cipher.getInstance(TRANSFORMATION);
+        cipher.init(Cipher.DECRYPT_MODE, key);
+        byte[] decryptedBytes = cipher.doFinal(Base64.getDecoder().decode(input));
+        return new String(decryptedBytes, StandardCharsets.UTF_8);
     }
 }

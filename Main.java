@@ -1,4 +1,11 @@
 import java.io.*;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 /*
  * Note that this class uses the BufferedReader for input, while the others use the Scanner.
  * There are 2 reasons for this:
@@ -9,8 +16,10 @@ import java.io.*;
 public class Main {
     final static InputStreamReader r = new InputStreamReader(System.in);
     final static BufferedReader br = new BufferedReader(r);
+    private static final String ALGORITHM = "AES";
+    private static final String TRANSFORMATION = "AES";
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, Exception, NoSuchAlgorithmException {
         mark: while (true) {
             System.out.println("Encrypt/Decrypt? [1/2] [ANYTHING ELSE TO QUIT!]");
             int a = 0;
@@ -39,7 +48,7 @@ public class Main {
         System.exit(1); // Exit code 1: User ended program WILLINGLY
     }
 
-    public static void encrypt(int x) throws IOException {
+    public static void encrypt(int x) throws IOException, NoSuchAlgorithmException, Exception {
         switch (x) {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
@@ -113,6 +122,15 @@ public class Main {
                 String encrypted = Encrypting.PK(n, modulo, publicKey);
                 System.out.println(encrypted + "\n");
                 break;
+            case 4:
+                System.out.println("Enter text to be encrypted: ");
+                String encryptedText = br.readLine();
+                System.out.println("Enter the key: ");
+                String keyString = br.readLine();
+                SecretKey k = generateKey(keyString);
+                encryptedText = Encrypting.AESEncrypt(encryptedText, k);
+                System.out.println("Encrypted text: " + encryptedText);
+                break;
             default:
                 System.out.println("This part should be unreachable.");
                 System.exit(2); // Exit code 2: User broke the program PURPOSEFULLY :(
@@ -120,7 +138,7 @@ public class Main {
 
     }
     //comment for git testing
-    public static void decrypt(int x) throws IOException {
+    public static void decrypt(int x) throws IOException, NoSuchAlgorithmException, Exception {
         switch (x) {
             case 1:
                 System.out.println("Shift by: [Enter an integer]");
@@ -177,6 +195,15 @@ public class Main {
                 String decrypted = Decrypting.PK(n, modulo, privateKey);
                 System.out.println(decrypted + "\n");
                 break;
+            case 4: 
+                System.out.println("Enter text to be decrypted: ");
+                String decryptedText = br.readLine();
+                System.out.println("Enter the key: ");
+                String keyString = br.readLine();
+                SecretKey k = generateKey(keyString);
+                System.out.println("Key: " + k);
+                decryptedText = Decrypting.AESDecrypt(decryptedText, k);
+                System.out.println("Decrypted text: " + decryptedText);
             default:
                 System.out.println("This part should be unreachable");
                 System.exit(2); // Exit code 2: User broke the program PURPOSEFULLY :(
@@ -184,21 +211,22 @@ public class Main {
     }
 
     public static int userInput() {
-        System.out.println("Encryption type | Difficulty to crack [1/2/3]");
+        System.out.println("Encryption type | Difficulty to crack [1/2/3/4]");
         System.out.println("ASCII-Exchange (Substitution) | Easy");
         System.out.println("Generic Public Key Encryption | Medium");
         System.out.println("XOR | Hard");
+        System.out.println("AES | Impossible");
 
         int a = 0;
         while (true) {
             try {
                 a = Integer.parseInt(br.readLine());
-                if (a != 1 && a != 2 && a != 3) {
-                    throw new Exception("Not a 1/2/3");
+                if (a != 1 && a != 2 && a != 3 && a != 4) {
+                    throw new Exception("Not a 1/2/3/4");
                 }
                 break;
             } catch (Exception e) {
-                System.out.println("Enter 1/2/3 only!");
+                System.out.println("Enter 1/2/3/4 only!");
             }
         }
         return a;
@@ -228,6 +256,13 @@ public class Main {
         }
         return arr;
     }
+    private static SecretKey generateKey(String keyString) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] keyBytes = md.digest(keyString.getBytes(StandardCharsets.UTF_8));
+        return new SecretKeySpec(keyBytes, ALGORITHM);
+    }
+
 }
 
-//KEY: 01010101
+//XOR KEY: 01010101
+//AES KEY: 12345678901234561234567890123451234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012
