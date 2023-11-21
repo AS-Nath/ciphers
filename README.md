@@ -75,8 +75,6 @@ cryptography.
 <br>
 <br>
 
-***The following components are IN DEVELOPMENT and are subject to change.***
-
 # *XOR*
 XOR is a logic gate which works as follows:
 <br>
