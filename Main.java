@@ -5,6 +5,8 @@ import java.io.*;
  * 1. Personal whim - wanted to play around with different tools.
  * 2. Scanner was giving trouble early in development, and BufferedReader helped me debug
  *    the issue. Did not bother to change after the problem was solved. 
+ *    Side-note: The issue was with the sc.close() method - it would close the 
+ *    whole input stream, and no further input could be taken!
  */
 public class Main {
     final static InputStreamReader r = new InputStreamReader(System.in);
@@ -71,26 +73,6 @@ public class Main {
                 String key = br.readLine();
                 String enc = Encrypting.XOR(i, key);
                 System.out.println(enc);
-                /*
-                String[] arr = tokenise(i);
-                for (int c = 0; c < arr.length; c++) {
-                    arr[c] = arr[c].substring(4);
-                    System.out.println(arr[c]);
-                }
-                */
-                /*
-                System.out.println("Enter text to be encrypted: ");
-                String i = br.readLine();
-                System.out.println("Enter 8-bit binary key: ");
-                String key = br.readLine();
-                String[] arr = tokenise(i);
-                String finalString = "";
-                for (int c = 0; c < arr.length; c++) {
-                    finalString = finalString + Encrypting.XOR(arr[c], key);
-                }
-                //String enc = Encrypting.XOR(i, key);
-                System.out.println(finalString);
-                */
                 break;
             case 2:
                 System.out.println("Enter text to be encrypted: ");
@@ -145,7 +127,6 @@ public class Main {
                 }
                 System.out.println(ns);
                 break;
-            // ADD MORE CASES
             case 3:                
                 System.out.println("Enter text to be decrypted: ");
                 String i = br.readLine();
@@ -153,25 +134,13 @@ public class Main {
                 String key = br.readLine();
                 String dec = Decrypting.XOR(i, key);
                 System.out.println(dec);
-                /*
-                System.out.println("Enter text to be decrypted: ");
-                String i = br.readLine();
-                System.out.println("Enter 8-bit binary key: ");
-                String key = br.readLine();
-                String[] arr = tokenise(i);
-                String finalString = "";
-                for (int c = 0; c < arr.length; c++) {
-                    finalString = finalString + Decrypting.XOR(arr[c], key);
-                }
-                //String enc = Encrypting.XOR(i, key);
-                System.out.println(finalString);
-                */
                 break;
             case 2:
-                // publicKey = 123, privateKey = 133
+                //publicKey = 123, privateKey = 133
+                //The keys add to modulo-1
                 System.out.println("Enter text to be decrypted: ");
                 String n = br.readLine();
-                int modulo = 256; // For now this is fixed.
+                int modulo = 256; // This is fixed.
                 System.out.println("Enter private key: ");
                 int privateKey = Integer.parseInt(br.readLine());
                 String decrypted = Decrypting.PK(n, modulo, privateKey);
@@ -203,6 +172,9 @@ public class Main {
         }
         return a;
     }
+    //This is a debugging tool I wrote:
+    //it has no use in the real project, but I decided 
+    //to keep it for future reference.
     public static String[] tokenise(String s) {
         int len = 20;
         //arr[] will be an array of 20-char long strings.
@@ -230,4 +202,4 @@ public class Main {
     }
 }
 
-//KEY: 01010101
+//KEY: 01010101 [use this to test the XOR cipher!]

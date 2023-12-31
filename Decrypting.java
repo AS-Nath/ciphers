@@ -1,9 +1,6 @@
 import java.util.*;
-
 public class Decrypting {
-
     static final Scanner sc = new Scanner(System.in);
-
     public static String unicodeExchange(int shift, String s) {
         String ns = "";
         for (int i = 0; i < s.length(); i++) {
@@ -34,7 +31,6 @@ public class Decrypting {
         }
         return ns;
     }
-
     public static String XOR(String n, String key) {
         char[] arr = new char[n.length()];
         for (int i = 0; i < n.length(); i++) {
@@ -57,7 +53,6 @@ public class Decrypting {
         }        
         return ns; 
     }
-
     public static String PK(String n, int modulo, int privateKey) {
         String ns = "";
         for (int i = 0; i < n.length(); i++) {
