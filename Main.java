@@ -203,3 +203,4 @@ public class Main {
 }
 
 //KEY: 01010101 [use this to test the XOR cipher!]
+//ÆÅØÏÇÃÚÙßÇÎÅÆÅØ

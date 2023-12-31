@@ -42,7 +42,12 @@ public class Decrypting {
             binaryArray[i] = Integer.toBinaryString(0x100 | num).substring(1);
         }
         for (int i = 0; i < n.length(); i++) {
-            binaryArray[i] = applyXOR(binaryArray[i], key);
+            if (binaryArray[i].equals("00100000")) {
+                continue;
+            }
+            else{
+                binaryArray[i] = applyXOR(binaryArray[i], key);
+            }
         }
         for (int i = 0; i < n.length(); i++) {
             arr[i] = (char)Integer.parseInt(binaryArray[i], 2);
