@@ -11,7 +11,6 @@ import java.io.*;
 public class Main {
     final static InputStreamReader r = new InputStreamReader(System.in);
     final static BufferedReader br = new BufferedReader(r);
-
     public static void main(String[] args) throws IOException {
         mark: while (true) {
             System.out.println("Encrypt/Decrypt? [1/2] [ANYTHING ELSE TO QUIT!]");
